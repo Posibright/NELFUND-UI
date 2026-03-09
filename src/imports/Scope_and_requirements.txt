@@ -1,0 +1,113 @@
+In Scope
+User Management: Registration, login, and profile management for Applicants and Administrators.
+Application Submission: Multi-step application form capturing personal info, skills, demographics, and document uploads.
+Identity Verification: Integration with NIN and BVN databases for real-time applicant validation.
+Geo-Location Restriction: IP-based validation to restrict applications to the pilot phase locations (FCT, Lagos, Oyo, +1-2 others).
+Application Management (Backend): Administrator interface to view, search, filter, and shortlist applicants.
+Quota Management: Admin tool to set and enforce location-based percentage quotas for shortlisting.
+Communication Module: Automated email and SMS notifications for shortlisting and other status updates.
+Reporting & Dashboard: Admin dashboards with key metrics and a module to generate/download reports (Excel, CSV, PDF).
+Audit Logging: Track all critical actions (logins, status changes, downloads) for security and accountability.
+Integration: APIs to connect with external services (NIN, BVN, SMS Gateway, Email Server).
+
+Functional Requirements:
+FR-01	The system shall allow new users (Applicants) to register using a valid email address and mobile phone number. A verification code (OTP) shall be sent to both the email and phone to activate the account.
+FR-02	The system shall enforce password complexity rules (minimum 8 characters, including uppercase, lowercase, number, and special character) for all user accounts.
+FR-03	The system shall provide a "Forgot Password" flow that allows users to reset their password via OTP sent to their registered email or phone.
+FR-04	The system shall support the creation of Administrator accounts by a Super Admin. These accounts must have Multi-Factor Authentication (MFA) enforced at first login.
+Geo-Location Validation (Pilot Scope Enforcement)
+FR-05	Upon accessing the application form, the system shall capture the applicant's IP address and perform a geo-location lookup against the pre-configured allowed state for the pilot: Oyo state.
+FR-06	If the IP address originates from a location outside Oyo state, the system shall display a polite message: "The SKILL UP Pilot application is currently only open to residents of Oyo State. Please check back for future phases in your state." The system shall prevent access to the application form.
+FR-07	The system shall log the IP address and geolocation result for every application attempt (both successful and blocked) for audit purposes.
+Application Form (Multi-Step Wizard with Eligibility Filtering)
+FR-09	The system shall present the application as a multi-step wizard with a clear progress indicator. Steps shall include: 1) Eligibility Screening, 2) Personal Information & Identification, 3) Skill Selection & Experience, 4) Financial & Literacy Declaration, 5) Document Upload, 6) Review & Submit.
+Step 1: Eligibility Screening
+FR-10	The form shall present the following mandatory eligibility questions to the user:
+
+1. State of Residence: (Dropdown pre-populated with Nigerian states). Validation: If NOT "Oyo", show error and prevent proceeding.
+
+2. Date of Birth: (Date picker). Validation: Calculate age. If age is <18 or >45, show error and prevent proceeding.
+
+3. Citizenship: (Radio button: Nigerian / Other). Validation: If "Other" is selected, show error and prevent proceeding.
+FR-11	If the user fails any of the eligibility checks in Step 1, the system shall display a polite message indicating they do not meet the criteria for the pilot phase and prevent them from proceeding to Step 2.
+Step 2: Personal Information & Identification
+FR-12	Upon passing Step 1, the system shall present a form to capture:
+* Full Name (Surname, First Name, Other Names)
+* Gender (Dropdown: Male, Female, Other)
+* Email Address (Pre-filled from registration, read-only)
+* Phone Number (Pre-filled from registration, read-only)
+* Residential Address (Street, City, LGA - with LGA dropdown filtered by Oyo State LGAs)
+* NIN (National Identification Number)
+* BVN (Bank Verification Number)
+FR-13	NIN & BVN Verification: Upon entry of NIN and BVN, the system shall call the respective official APIs (NIMC/NIBSS) in real-time. 
+FR-14	If NIN/BVN verification fails, the system shall display a user-friendly error message (e.g., "The NIN provided could not be verified. Please check and re-enter.") and prevent the user from proceeding to the next step.
+Step 3: Skill Selection & Experience (Priority Trades)
+FR-15	The system shall present a dropdown or radio button list of the priority trades for the pilot:
+* Solar Installation
+* Artificial Intelligence (AI)
+* Makeup Artistry
+* Fashion Design
+FR-16	The user may select only one primary skill track from the list. The system shall enforce this single selection.
+FR-17	Recognition of Prior Learning (RPL): Following skill selection, the system shall present a field: "Describe your existing experience in this trade (e.g., years of informal apprenticeship, projects completed)." This shall be a mandatory text area.
+Step 4: Financial Need & Literacy Declaration
+FR-18	To assess Financial Need, the system shall present the following mandatory question:
+* "Do you have sufficient means to fund this training independently?" (Radio: Yes / No)
+
+Validation: If "Yes" is selected, the system shall display a message: "This program is designed for individuals with financial need. You may not be eligible." and prevent the user from proceeding.
+FR-19	To assess Basic Literacy, the system shall present the following mandatory declaration checkbox:
+
+* "I confirm that I possess sufficient basic literacy to participate in training activities, follow instructions, and engage in simple documentation or communication tasks associated with my selected trade."
+Step 5: Document Upload
+FR-20	The system shall allow the upload of the following mandatory documents:
+1. Recent Passport Photograph (JPEG/PNG, max 2MB)
+2. Highest Educational Certificate or Statement of Result (PDF/JPEG/PNG, max 2MB) - optional
+3. Proof of Residence (e.g., Utility bill, Bank Statement, LGA letter - PDF/JPEG/PNG, max 2MB)
+FR-21	The system shall restrict uploads to the specified file types and enforce the maximum file size limit (2MB). Clear error messages shall be displayed for invalid files.
+Step 6: Review & Submit
+FR-22	The system shall display a summary of all entered data and uploaded documents for the user to review in a print-friendly format.
+FR-23	The final step shall include a mandatory checkbox: "I hereby declare that the information provided is true and accurate. I agree to the [Data Privacy Policy] and [Terms & Conditions]."
+FR-24	Upon clicking "Submit", the system shall write all data to the database and generate a unique Application ID for the user.
+Post-Submission & Communication
+FR-25	Immediately after successful submission, the system shall display a success page showing the applicant's unique Application ID and the next steps (e.g., "Your application has been received. You will be notified via SMS/Email if you are shortlisted for the next stage.").
+FR-26	The system shall trigger an automated email and SMS to the applicant confirming that their application has been received, including their Application ID.
+FR-27	The system shall provide a scheduled or triggered batch process for sending bulk SMS and email notifications to applicants whose status has been changed (e.g., to "Shortlisted," "Rejected," "Pending Documentation").
+Administrator Functionality - Application Management
+FR-28	The system shall provide a password-protected, secure admin dashboard accessible only to users with the 'Administrator' role.
+FR-29	The admin panel shall feature a master list/view of all applications, displaying key columns such as Application ID, Full Name, Phone, Priority Trade, LGA, NIN/BVN Verification Status, and Application Status.
+FR-30	The admin panel shall include a powerful search and filter tool, allowing admins to filter the applicant list by any combination of: Date Range, LGA, Priority Trade, NIN/BVN Verification Status (Verified/Failed), Financial Need Declaration, and Application Status.
+FR-31	Administrators shall be able to click on any applicant record to view a detailed profile page containing all information submitted by the applicant (including the "prior experience" text and a preview of uploaded documents).
+FR-32	The system shall allow an administrator to manually update an applicant's status from "Applied" to "Shortlisted," "Rejected," or "On-Hold." A comment field shall be mandatory for status changes to capture the reason for the decision.
+FR-34	The system shall provide an interface for managing the list of priority trades (Solar Installation, AI, Makeup Artistry, Fashion Design) allowing authorized admins to activate/deactivate them for future application rounds.
+Quota & Slot Management
+FR-41	The system shall allow admin define total slot capacity
+FR-42	The system shall allow percentage allocation per state
+FR-43	The system shall auto-calculate numeric slots per state
+FR-44	The system shall track real-time slot usage
+FR-45	The system shall prevent shortlisting beyond quota
+FR-46	The system shall show quota utilization dashboard
+FR-47	The system shall allow sector-specific quotas
+FR-48	The system shall log all quota adjustments
+Notification
+FR-57	The system shall integrate with SMS gateway API
+FR-58	The system shall integrate with Email SMTP service
+FR-59	The system shall send confirmation upon submission
+FR-60	The system shall send shortlist notification
+FR-61	The system shall send rejection notification
+FR-62	The system shall log delivery status
+FR-63	The system shall allow customizable templates
+Dashboard & Analytics
+FR-64	The system shall provide real-time dashboard
+FR-65	The dashboard shall show total applications
+FR-66	The dashboard shall show location breakdown
+FR-67	The dashboard shall show gender analytics
+FR-68	The dashboard shall show sector analytics
+FR-69	The dashboard shall show NIN/BVN validation rates
+FR-70	The dashboard shall show quota utilization %
+Role-Based Access Control (RBAC)
+FR-71	The system shall define roles (Super Admin, Reviewer, State Admin, Viewer)
+FR-72	The system shall restrict actions per role
+FR-73	The system shall allow role assignment
+FR-74	The system shall log role changes
+
+
+Redesign the UI accordingly.
