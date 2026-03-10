@@ -1,8 +1,4 @@
 
-  # NelFund UI
-
-  This is a code bundle for NelFund UI. The original project is available at https://www.figma.com/design/cGDL9oyFEsW3hbT7YC1GdR/NelFund-UI.
-
   ## Running the code
 
   Run `npm i` to install the dependencies.
