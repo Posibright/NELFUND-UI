@@ -142,7 +142,7 @@ export function Landing() {
               Citizens.
             </h1>
             <p className="text-lg text-neutral-400 mb-10 max-w-xl leading-relaxed">
-              NELFUND's SKILL UP Program, in collaboration with the Office of the Senior Special Assistant to the President on Technical, Vocational, and Entrepreneurship Education (OSSAP-TVEE), offers vocational training.
+              The NELFUND SKILL UP Program, in partnership with the Office of the Senior Special Assistant to the President on Technical, Vocational, and Entrepreneurship Education (OSSAP-TVEE), provides comprehensive vocational training to empower individuals with practical skills for the future.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link href="/apply">
