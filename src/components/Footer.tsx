@@ -51,11 +51,11 @@ export function Footer() {
               </div>
             </Link>
             <p className="text-neutral-500 text-sm leading-relaxed">
-              A Federal Government of Nigeria initiative providing fully-funded vocational skills training to eligible Nigerian youth.
+              A Federal Government of Nigeria initiative providing vocational skills training to eligible Nigerian youth.
             </p>
             <div className="mt-4 flex items-center gap-3 pt-4 border-t border-white/5">
-              <span className="text-[10px] text-neutral-600 uppercase tracking-widest">In partnership with</span>
-              <img src={ossapLogo.src} alt="OSSAP-TVEE" className="h-8 object-contain opacity-70 hover:opacity-100 transition-opacity" />
+              <span className="text-[10px] text-neutral-600 uppercase tracking-widest">In collaboration with</span>
+              <img src={ossapLogo.src} alt="OSSAP-TVEE" className="h-8 object-contain bg-white rounded-md px-2 py-1 opacity-100 shadow-sm" />
             </div>
             <div className="flex gap-3">
               {[Facebook, Twitter, Instagram, Linkedin].map((Icon, i) => (
