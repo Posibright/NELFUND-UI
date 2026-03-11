@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import {
-  Mail, Lock, Phone, User, ArrowRight, ShieldCheck, Eye, EyeOff,
-  CheckCircle2, AlertCircle, ChevronLeft, Loader2, KeyRound
+  Mail, Lock, Phone, User, ArrowRight, Eye, EyeOff,
+  CheckCircle2, AlertCircle, ChevronLeft, Loader2, KeyRound, ShieldCheck
 } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import nelfundLogo from "../assets/nelfund-logo.png";
 
 type AuthMode = "login" | "register" | "otp" | "forgot" | "resetOtp";
 
@@ -204,12 +205,10 @@ export function Auth() {
           </div>
 
           <Link href="/" className="flex items-center gap-2 relative z-10">
-            <div className="w-9 h-9 bg-emerald-600 rounded-lg flex items-center justify-center">
-              <ShieldCheck className="text-white w-5 h-5" />
-            </div>
+            <img src={nelfundLogo.src} alt="NELFUND" className="w-9 h-9 object-contain rounded-lg bg-white p-0.5" />
             <div>
               <div className="text-base font-bold tracking-tight leading-none">NELFUND</div>
-              <div className="text-[9px] text-emerald-400 font-bold tracking-widest uppercase mt-0.5">SKILL UP Pilot</div>
+              <div className="text-[9px] text-emerald-400 font-bold tracking-widest uppercase mt-0.5">SKILL UP</div>
             </div>
           </Link>
 
@@ -224,7 +223,7 @@ export function Auth() {
               {mode === "login"
                 ? "Sign in to track your application status and receive notifications about your SKILL UP application."
                 : mode === "register"
-                  ? "Register to apply for free vocational training. Oyo State residents aged 18–45 only."
+                  ? "Register to apply for free vocational training. Nigerian citizens aged 18\u201345."
                   : mode === "otp"
                     ? "A 6-digit verification code has been sent to your registered email and phone number."
                     : "Enter the OTP sent to your contact to securely reset your password."}

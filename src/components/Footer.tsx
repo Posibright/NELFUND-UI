@@ -1,5 +1,7 @@
-import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin, ShieldCheck } from "lucide-react";
+import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from "lucide-react";
 import Link from "next/link";
+import nelfundLogo from "../assets/nelfund-logo.png";
+import ossapLogo from "../assets/ossap-tvee logo.png";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -42,17 +44,19 @@ export function Footer() {
           {/* Brand Column */}
           <div className="space-y-5">
             <Link href="/" className="flex items-center gap-2.5 group">
-              <div className="w-9 h-9 bg-emerald-700 rounded-lg flex items-center justify-center">
-                <ShieldCheck className="text-white w-5 h-5" />
-              </div>
+              <img src={nelfundLogo.src} alt="NELFUND" className="w-9 h-9 object-contain rounded-lg bg-white p-0.5" />
               <div>
                 <div className="text-sm font-bold text-white leading-none">NELFUND</div>
-                <div className="text-[9px] text-emerald-400 font-bold tracking-widest uppercase mt-0.5">SKILL UP Pilot</div>
+                <div className="text-[9px] text-emerald-400 font-bold tracking-widest uppercase mt-0.5">SKILL UP</div>
               </div>
             </Link>
             <p className="text-neutral-500 text-sm leading-relaxed">
-              A Federal Government of Nigeria initiative providing fully-funded vocational skills training to eligible youth in Oyo State.
+              A Federal Government of Nigeria initiative providing fully-funded vocational skills training to eligible Nigerian youth.
             </p>
+            <div className="mt-4 flex items-center gap-3 pt-4 border-t border-white/5">
+              <span className="text-[10px] text-neutral-600 uppercase tracking-widest">In partnership with</span>
+              <img src={ossapLogo.src} alt="OSSAP-TVEE" className="h-8 object-contain opacity-70 hover:opacity-100 transition-opacity" />
+            </div>
             <div className="flex gap-3">
               {[Facebook, Twitter, Instagram, Linkedin].map((Icon, i) => (
                 <button key={i} className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-neutral-500 hover:bg-emerald-700 hover:text-white transition-all">
@@ -107,7 +111,7 @@ export function Footer() {
             </div>
           </div>
           <p className="text-xs text-neutral-700 mt-5">
-            NELFUND SKILL UP is a pilot initiative by the Federal Government of Nigeria. All applications are subject to eligibility verification and quota constraints. This portal is designed for residents of Oyo State only during the pilot phase.
+            NELFUND SKILL UP is an initiative by the Federal Government of Nigeria. All applications are subject to eligibility verification and quota constraints. This portal is open to eligible Nigerian citizens during the current program phase.
           </p>
         </div>
       </div>

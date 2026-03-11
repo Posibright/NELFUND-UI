@@ -1,9 +1,10 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, LogIn, ShieldCheck } from "lucide-react";
+import { Menu, X, LogIn } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Button } from "./ui/button";
+import nelfundLogo from "../assets/nelfund-logo.png";
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -40,15 +41,13 @@ export function Header() {
       <div className="container mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2.5 group">
-          <div className="w-9 h-9 bg-emerald-700 rounded-lg flex items-center justify-center group-hover:bg-emerald-600 transition-colors shadow-lg shadow-emerald-200/50">
-            <ShieldCheck className="text-white w-5 h-5" />
-          </div>
+          <img src={nelfundLogo.src} alt="NELFUND" className="w-9 h-9 object-contain rounded-lg bg-white p-0.5" />
           <div>
             <div className={`text-base font-bold tracking-tight leading-none ${isScrolled || !isLanding ? "text-neutral-900" : "text-white"}`}>
               NELFUND
             </div>
             <div className="text-[9px] text-emerald-500 font-bold tracking-widest uppercase mt-0.5">
-              SKILL UP Pilot
+              SKILL UP
             </div>
           </div>
         </Link>

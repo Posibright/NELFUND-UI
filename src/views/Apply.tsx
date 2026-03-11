@@ -180,9 +180,6 @@ export function Apply() {
   function validateStep1(): boolean {
     const errors: string[] = [];
     if (!stateOfResidence) { errors.push("Please select your state of residence."); }
-    else if (stateOfResidence !== "Oyo") {
-      errors.push(`The SKILL UP Pilot application is currently only open to residents of Oyo State. Please check back for future phases in your state.`);
-    }
     if (!dateOfBirth) { errors.push("Please enter your date of birth."); }
     else {
       const age = calculateAge(dateOfBirth);
@@ -287,11 +284,11 @@ export function Apply() {
 
   return (
     <div className="min-h-screen bg-neutral-50 pb-20">
-      {/* Geo-Restriction Notice */}
-      <div className="bg-amber-50 border-b border-amber-200 px-6 py-3">
-        <div className="container mx-auto flex items-center gap-3 text-sm text-amber-800">
-          <MapPin className="w-4 h-4 flex-shrink-0 text-amber-600" />
-          <span><strong>Location Notice:</strong> This application is currently only open to residents of <strong>Oyo State</strong>. Your state of residence will be verified in Step 1.</span>
+      {/* Program Notice */}
+      <div className="bg-emerald-50 border-b border-emerald-200 px-6 py-3">
+        <div className="container mx-auto flex items-center gap-3 text-sm text-emerald-800">
+          <MapPin className="w-4 h-4 flex-shrink-0 text-emerald-600" />
+          <span><strong>Starting in Oyo, built for Nigeria.</strong> The SKILL UP program is expanding nationwide. Your eligibility details will be verified in Step 1.</span>
         </div>
       </div>
 
@@ -453,7 +450,7 @@ export function Apply() {
 
                     {/* Address */}
                     <div className="p-5 bg-neutral-50 rounded-xl space-y-4 border border-neutral-100">
-                      <div className="text-xs font-bold uppercase tracking-wider text-neutral-400">Residential Address (Oyo State)</div>
+                      <div className="text-xs font-bold uppercase tracking-wider text-neutral-400">Residential Address</div>
                       <FormInput label="Street Address" required error={personalErrors.street}>
                         <input value={personal.street} onChange={e => setPersonal(p => ({ ...p, street: e.target.value }))} className={inputClass} placeholder="House number & street name" />
                       </FormInput>
@@ -837,36 +834,37 @@ export function Apply() {
           </AnimatePresence>
 
           {/* Navigation */}
-          <div className="flex items-center justify-between px-8 lg:px-10 py-6 border-t border-neutral-100 bg-neutral-50/50">
-            <button
-              type="button"
-              onClick={handleBack}
-              className={`flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-bold transition-all ${currentStep === 0 ? "invisible" : "text-neutral-600 hover:bg-neutral-100"
-                }`}
-            >
-              <ChevronLeft className="w-4 h-4" /> Back
-            </button>
-
-            <div className="text-xs text-neutral-400">
+          <div className="flex flex-col gap-3 px-4 sm:px-8 lg:px-10 py-5 border-t border-neutral-100 bg-neutral-50/50">
+            <div className="text-xs text-neutral-400 text-center">
               Step {currentStep + 1} of {STEPS.length}
             </div>
-
-            {currentStep === STEPS.length - 1 ? (
-              <button
-                onClick={handleSubmit}
-                className="flex items-center gap-2 px-8 py-2.5 bg-emerald-700 text-white rounded-lg text-sm font-bold hover:bg-emerald-600 transition-all shadow-lg shadow-emerald-200"
-              >
-                Submit Application <CheckCircle2 className="w-4 h-4" />
-              </button>
-            ) : (
+            <div className="flex items-center gap-3">
               <button
                 type="button"
-                onClick={handleNext}
-                className="flex items-center gap-2 px-8 py-2.5 bg-emerald-700 text-white rounded-lg text-sm font-bold hover:bg-emerald-600 transition-all"
+                onClick={handleBack}
+                className={`flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg text-sm font-bold transition-all w-full sm:w-auto ${currentStep === 0 ? "hidden" : "text-neutral-600 hover:bg-neutral-100 border border-neutral-200"
+                  }`}
               >
-                Continue <ChevronRight className="w-4 h-4" />
+                <ChevronLeft className="w-4 h-4" /> Back
               </button>
-            )}
+
+              {currentStep === STEPS.length - 1 ? (
+                <button
+                  onClick={handleSubmit}
+                  className="flex items-center justify-center gap-2 px-8 py-2.5 bg-emerald-700 text-white rounded-lg text-sm font-bold hover:bg-emerald-600 transition-all shadow-lg shadow-emerald-200 w-full sm:w-auto sm:ml-auto"
+                >
+                  Submit Application <CheckCircle2 className="w-4 h-4" />
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  onClick={handleNext}
+                  className="flex items-center justify-center gap-2 px-8 py-2.5 bg-emerald-700 text-white rounded-lg text-sm font-bold hover:bg-emerald-600 transition-all w-full sm:w-auto sm:ml-auto"
+                >
+                  Continue <ChevronRight className="w-4 h-4" />
+                </button>
+              )}
+            </div>
           </div>
         </div>
 
