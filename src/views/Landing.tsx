@@ -4,10 +4,11 @@ import Link from "next/link";
 import {
   ArrowRight, CheckCircle2, MapPin, Calendar, Globe,
   BadgeCheck, ChevronDown, Zap, Brain, Scissors, Sparkles,
-  Clock, Users, FileCheck, ShieldCheck
+  Clock, Users, FileCheck, ShieldCheck, CalendarCheck, Briefcase, Layers, GraduationCap, Star
 } from "lucide-react";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { Button } from "../components/ui/button";
+import ossapLogo from "../assets/ossap-tvee logo.png";
 
 const TRACKS = [
   {
@@ -55,8 +56,8 @@ const TRACKS = [
 const ELIGIBILITY = [
   {
     icon: <MapPin className="w-5 h-5" />,
-    title: "Oyo State Resident",
-    desc: "You must currently reside in Oyo State. This is the pilot phase location.",
+    title: "Valid Identification",
+    desc: "You must have valid NIN and BVN identification details to apply for this program.",
   },
   {
     icon: <Calendar className="w-5 h-5" />,
@@ -90,8 +91,8 @@ const FAQS = [
     a: "Yes. NELFUND covers the full cost of training for all selected beneficiaries. There are no tuition or registration fees.",
   },
   {
-    q: "Is the SKILL UP program only available in Oyo State?",
-    a: "Yes. The SKILL UP program is currently in its pilot phase, which is exclusively open to residents of Oyo State. Future phases will be expanded to other states.",
+    q: "Where is the SKILL UP program available?",
+    a: "The SKILL UP program launched its pilot in Oyo State and is expanding nationwide. Nigerian citizens across all states are encouraged to apply.",
   },
   {
     q: "Can I apply for more than one skill track?",
@@ -133,12 +134,12 @@ export function Landing() {
           >
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-700/30 border border-emerald-500/40 text-emerald-400 text-xs font-bold uppercase tracking-wider mb-8">
               <MapPin className="w-3 h-3" />
-              Oyo State Pilot — Now Open
+              SKILL UP — Applications Open
             </div>
             <h1 className="text-5xl lg:text-6xl text-white mb-6 leading-[1.08] tracking-tight">
               Free Skills Training<br />
-              <span className="text-emerald-400">for Oyo State</span><br />
-              Residents.
+              <span className="text-emerald-400">for Nigerian</span><br />
+              Citizens.
             </h1>
             <p className="text-lg text-neutral-400 mb-10 max-w-xl leading-relaxed">
               NELFUND's SKILL UP Pilot Program offers fully-funded vocational training in Solar Installation, AI, Makeup Artistry, and Fashion Design — at no cost to you.
@@ -155,6 +156,10 @@ export function Landing() {
                   Check Eligibility
                 </Button>
               </a>
+            </div>
+            <div className="flex items-center gap-3 mt-6">
+              <span className="text-[10px] text-neutral-500 uppercase tracking-widest">In partnership with</span>
+              <img src={ossapLogo.src} alt="OSSAP-TVEE" className="h-7 object-contain bg-white rounded-md px-2 py-1 opacity-80 hover:opacity-100 transition-opacity" />
             </div>
             <div className="flex flex-wrap gap-6 mt-10 pt-10 border-t border-white/10">
               {[
@@ -304,7 +309,7 @@ export function Landing() {
                 </button>
               </Link>
               <p className="text-center text-xs text-emerald-400 mt-4">
-                Free. No hidden fees. Oyo State residents only.
+                Free. No hidden fees. Open to eligible Nigerians.
               </p>
             </div>
           </div>
@@ -354,10 +359,14 @@ export function Landing() {
               <p className="text-neutral-400 leading-relaxed mb-8">
                 The SKILL UP Pilot is designed to upskill young Nigerians in emerging and in-demand trades — creating pathways to employment, entrepreneurship, and financial independence.
               </p>
+              <div className="flex items-center gap-3 mb-6">
+                <span className="text-xs text-neutral-600 uppercase tracking-widest">In partnership with</span>
+                <img src={ossapLogo.src} alt="OSSAP-TVEE" className="h-7 object-contain bg-white rounded-md px-2 py-1 opacity-80 hover:opacity-100 transition-opacity" />
+              </div>
               <div className="grid grid-cols-3 gap-6 pt-8 border-t border-white/10">
                 {[
                   { icon: <Users className="w-5 h-5" />, label: "Beneficiaries Targeted", value: "5,000+" },
-                  { icon: <FileCheck className="w-5 h-5" />, label: "Pilot Location", value: "Oyo State" },
+                  { icon: <FileCheck className="w-5 h-5" />, label: "Govt. Backed", value: "NELFUND" },
                   { icon: <ShieldCheck className="w-5 h-5" />, label: "Training Cost", value: "₦0.00" },
                 ].map((s, i) => (
                   <div key={i}>
@@ -419,7 +428,7 @@ export function Landing() {
         <div className="container mx-auto px-6 text-center">
           <h2 className="text-4xl text-white mb-4">Applications Are Now Open</h2>
           <p className="text-emerald-200 max-w-xl mx-auto mb-10 leading-relaxed">
-            If you are an Oyo State resident aged 18–45 with financial need, this opportunity is for you. Apply today — before slots run out.
+            If you are a Nigerian citizen aged 18–45 with financial need, this opportunity is for you. Apply today — before slots run out.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link href="/apply">

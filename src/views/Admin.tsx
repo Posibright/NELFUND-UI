@@ -12,6 +12,7 @@ import {
 } from "recharts";
 import Link from "next/link";
 import { toast } from "sonner";
+import nelfundLogo from "../assets/nelfund-logo.png";
 
 // ---- Mock Data ----
 const MOCK_APPLICATIONS = [
@@ -169,12 +170,10 @@ export function Admin() {
       <div className={`${mobile ? "block" : "hidden lg:flex"} flex-col h-full bg-neutral-950 text-white w-64 flex-shrink-0`}>
         <div className="p-6 border-b border-white/10">
           <Link href="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-emerald-600 rounded-lg flex items-center justify-center">
-              <ShieldCheck className="w-4 h-4 text-white" />
-            </div>
+            <img src={nelfundLogo.src} alt="NELFUND" className="w-8 h-8 object-contain rounded-lg bg-white p-0.5" />
             <div>
               <div className="text-sm font-bold">NELFUND Admin</div>
-              <div className="text-[10px] text-emerald-400 uppercase tracking-widest">SKILL UP Pilot</div>
+              <div className="text-[10px] text-emerald-400 uppercase tracking-widest">SKILL UP</div>
             </div>
           </Link>
         </div>
@@ -231,7 +230,7 @@ export function Admin() {
             </button>
             <div>
               <div className="text-base font-bold text-neutral-900 capitalize">{navItems.find(n => n.id === activeTab)?.label}</div>
-              <div className="text-xs text-neutral-400">NELFUND SKILL UP Pilot — Oyo State</div>
+              <div className="text-xs text-neutral-400">NELFUND SKILL UP Program</div>
             </div>
           </div>
           <div className="flex items-center gap-3">
@@ -802,10 +801,10 @@ export function Admin() {
                 <div className="space-y-4">
                   <div className="flex items-center justify-between p-4 bg-neutral-50 rounded-xl border border-neutral-100">
                     <div>
-                      <div className="text-sm font-medium text-neutral-900">Active Pilot State</div>
-                      <div className="text-xs text-neutral-400">Currently restricted to Oyo State (FR-05)</div>
+                      <div className="text-sm font-medium text-neutral-900">Active Program Scope</div>
+                      <div className="text-xs text-neutral-400">Currently active for all Nigerian states</div>
                     </div>
-                    <span className="font-bold text-sm text-emerald-700 bg-emerald-50 px-3 py-1.5 rounded-lg">Oyo State</span>
+                    <span className="font-bold text-sm text-emerald-700 bg-emerald-50 px-3 py-1.5 rounded-lg">All States</span>
                   </div>
                   <div className="flex items-center justify-between p-4 bg-neutral-50 rounded-xl border border-neutral-100">
                     <div>
