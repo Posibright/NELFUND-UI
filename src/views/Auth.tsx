@@ -223,7 +223,7 @@ export function Auth() {
               {mode === "login"
                 ? "Sign in to track your application status and receive notifications about your SKILL UP application."
                 : mode === "register"
-                  ? "Register to apply for free vocational training. Nigerian citizens aged 18\u201345."
+                  ? "Register to apply for vocational training. Nigerian citizens aged 18\u201345."
                   : mode === "otp"
                     ? "A 6-digit verification code has been sent to your registered email and phone number."
                     : "Enter the OTP sent to your contact to securely reset your password."}

@@ -87,8 +87,8 @@ const PROCESS_STEPS = [
 
 const FAQS = [
   {
-    q: "Is this training program free?",
-    a: "Yes. NELFUND covers the full cost of training for all selected beneficiaries. There are no tuition or registration fees.",
+    q: "Is there a cost for this training program?",
+    a: "NELFUND covers the full cost of training for all selected beneficiaries. There are no upfront tuition or registration fees for those chosen through the competitive selection process.",
   },
   {
     q: "Where is the SKILL UP program available?",
@@ -137,12 +137,12 @@ export function Landing() {
               SKILL UP — Applications Open
             </div>
             <h1 className="text-5xl lg:text-6xl text-white mb-6 leading-[1.08] tracking-tight">
-              Free Skills Training<br />
-              <span className="text-emerald-400">for Nigerian</span><br />
+              Vocational Skills<br />
+              <span className="text-emerald-400">Training for Nigerian</span><br />
               Citizens.
             </h1>
             <p className="text-lg text-neutral-400 mb-10 max-w-xl leading-relaxed">
-              NELFUND's SKILL UP Pilot Program offers fully-funded vocational training in Solar Installation, AI, Makeup Artistry, and Fashion Design — at no cost to you.
+              The NELFUND SKILL UP Program, in partnership with the Office of the Senior Special Assistant to the President on Technical, Vocational, and Entrepreneurship Education (OSSAP-TVEE), provides comprehensive vocational training to empower individuals with practical skills for the future.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link href="/apply">
@@ -158,14 +158,14 @@ export function Landing() {
               </a>
             </div>
             <div className="flex items-center gap-3 mt-6">
-              <span className="text-[10px] text-neutral-500 uppercase tracking-widest">In partnership with</span>
-              <img src={ossapLogo.src} alt="OSSAP-TVEE" className="h-7 object-contain bg-white rounded-md px-2 py-1 opacity-80 hover:opacity-100 transition-opacity" />
+              <span className="text-[10px] text-neutral-500 uppercase tracking-widest">In collaboration with</span>
+              <img src={ossapLogo.src} alt="OSSAP-TVEE" className="h-10 object-contain bg-white rounded-md px-3 py-1.5 opacity-100 shadow-sm" />
             </div>
             <div className="flex flex-wrap gap-6 mt-10 pt-10 border-t border-white/10">
               {[
                 { label: "Slots Available", value: "5,000+" },
                 { label: "Skill Tracks", value: "4" },
-                { label: "Training Cost", value: "₦0" },
+                { label: "Target", value: "Nationwide" },
               ].map((s, i) => (
                 <div key={i}>
                   <div className="text-3xl text-white">{s.value}</div>
@@ -309,7 +309,7 @@ export function Landing() {
                 </button>
               </Link>
               <p className="text-center text-xs text-emerald-400 mt-4">
-                Free. No hidden fees. Open to eligible Nigerians.
+                Join thousands of Nigerians building their future.
               </p>
             </div>
           </div>
@@ -360,14 +360,14 @@ export function Landing() {
                 The SKILL UP Pilot is designed to upskill young Nigerians in emerging and in-demand trades — creating pathways to employment, entrepreneurship, and financial independence.
               </p>
               <div className="flex items-center gap-3 mb-6">
-                <span className="text-xs text-neutral-600 uppercase tracking-widest">In partnership with</span>
-                <img src={ossapLogo.src} alt="OSSAP-TVEE" className="h-7 object-contain bg-white rounded-md px-2 py-1 opacity-80 hover:opacity-100 transition-opacity" />
+                <span className="text-xs text-neutral-600 uppercase tracking-widest">In collaboration with</span>
+                <img src={ossapLogo.src} alt="OSSAP-TVEE" className="h-10 object-contain bg-white rounded-md px-3 py-1.5 opacity-100 shadow-sm" />
               </div>
               <div className="grid grid-cols-3 gap-6 pt-8 border-t border-white/10">
                 {[
                   { icon: <Users className="w-5 h-5" />, label: "Beneficiaries Targeted", value: "5,000+" },
                   { icon: <FileCheck className="w-5 h-5" />, label: "Govt. Backed", value: "NELFUND" },
-                  { icon: <ShieldCheck className="w-5 h-5" />, label: "Training Cost", value: "₦0.00" },
+                  { icon: <ShieldCheck className="w-5 h-5" />, label: "Initiative", value: "Federal" },
                 ].map((s, i) => (
                   <div key={i}>
                     <div className="text-emerald-400 mb-2">{s.icon}</div>
